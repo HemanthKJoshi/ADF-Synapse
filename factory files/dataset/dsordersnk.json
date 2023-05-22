@@ -10,6 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
+				"fileName": "orderssink.csv",
 				"fileSystem": "orders"
 			},
 			"columnDelimiter": ",",
