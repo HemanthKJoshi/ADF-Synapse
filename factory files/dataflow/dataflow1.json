@@ -23,10 +23,6 @@
 			],
 			"transformations": [
 				{
-					"name": "status",
-					"description": "Filtering rows using expressions on columns Stores and Order Status."
-				},
-				{
 					"name": "grouponstatus"
 				}
 			],
@@ -41,9 +37,8 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> florders",
-				"florders filter(Column_4=='COMPLETE'&& Column_5 == '1') ~> status",
-				"status aggregate(groupBy(Column_3),",
-				"     Column_3 = count(Column_4 == 'COMPLETE')) ~> grouponstatus",
+				"florders aggregate(groupBy(Column_4),",
+				"     {Completed Orders} = count(Column_5 == 'COMPLETE')) ~> grouponstatus",
 				"grouponstatus sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     umask: 0022,",
